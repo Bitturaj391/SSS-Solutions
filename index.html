@@ -36,6 +36,18 @@
             overflow-x: hidden; /* Prevents horizontal scrollbar */
         }
 
+        /* Scroll Reveal Effect */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Navbar */
         .navbar {
             background: var(--primary-color) !important;
@@ -136,46 +148,46 @@
         }
 
         .hero-circle {
-    width: clamp(200px, 40vw, 400px); /* Adjust size as desired */
-    height: clamp(200px, 40vw, 400px); /* Adjust size as desired */
-    border-radius: 50%;
-    overflow: hidden;
-    border: 8px solid rgba(255, 255, 255, 0.6);
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    animation: zoomIn 1.5s ease;
+            width: clamp(200px, 40vw, 400px); /* Adjust size as desired */
+            height: clamp(200px, 40vw, 400px); /* Adjust size as desired */
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid rgba(255, 255, 255, 0.6);
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: zoomIn 1.5s ease;
 
-    /* --- ENHANCEMENTS FOR 3D & SHADOW --- */
-    transform: perspective(1000px) rotateY(-10deg) rotateX(5deg); /* Subtle 3D tilt */
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.4), /* Stronger, deeper shadow */
-        0 0 0 15px rgba(255, 255, 255, 0.1); /* Lighter outer ring for depth */
-    transition: transform 0.6s ease, box-shadow 0.6s ease; /* Smooth transition for hover */
-}
+            /* --- ENHANCEMENTS FOR 3D & SHADOW --- */
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg); /* Subtle 3D tilt */
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.4), /* Stronger, deeper shadow */
+                0 0 0 15px rgba(255, 255, 255, 0.1); /* Lighter outer ring for depth */
+            transition: transform 0.6s ease, box-shadow 0.6s ease; /* Smooth transition for hover */
+        }
 
-/* Optional: Add a subtle hover effect for more interactivity */
-.hero-circle:hover {
-    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02); /* Straighten and slightly enlarge on hover */
-    box-shadow:
-        0 25px 50px rgba(0, 0, 0, 0.5), /* Even stronger shadow on hover */
-        0 0 0 20px rgba(255, 255, 255, 0.15);
-}
+        /* Optional: Add a subtle hover effect for more interactivity */
+        .hero-circle:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02); /* Straighten and slightly enlarge on hover */
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.5), /* Even stronger shadow on hover */
+                0 0 0 20px rgba(255, 255, 255, 0.15);
+        }
 
-.hero-circle::before {
-    content: "";
-    position: absolute;
-    inset: -20px; /* Increased inset for a larger glow */
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    z-index: -1;
-    filter: blur(35px); /* Increased blur for a softer, wider glow */
-    opacity: 0.7; /* Slightly more opaque glow */
-    /* Add a subtle shadow to the glow itself */
-    box-shadow: 0 0 50px rgba(77, 182, 172, 0.8); /* Shadow matching secondary color */
-}
+        .hero-circle::before {
+            content: "";
+            position: absolute;
+            inset: -20px; /* Increased inset for a larger glow */
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            z-index: -1;
+            filter: blur(35px); /* Increased blur for a softer, wider glow */
+            opacity: 0.7; /* Slightly more opaque glow */
+            /* Add a subtle shadow to the glow itself */
+            box-shadow: 0 0 50px rgba(77, 182, 172, 0.8); /* Shadow matching secondary color */
+        }
 
         .hero-circle img,
         .hero-circle video {
@@ -215,19 +227,11 @@
         #about .about-container { max-width: 900px; margin: auto; }
         #about .intro, #about .closing { font-size: 1.1rem; line-height: 1.6; text-align: center; max-width: 700px; margin: 0 auto 1.5rem; }
         #about .about-points li {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.6s ease-out;
             background: rgba(255, 255, 255, 0.95);
             border-left: 5px solid var(--secondary-color);
             margin-bottom: 12px;
             padding: 12px;
             border-radius: 6px;
-        }
-
-        #about .about-points li.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         /* Services Cards */
@@ -238,20 +242,9 @@
             box-shadow: var(--shadow-light);
             transition: all var(--transition-speed);
             padding: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease-out;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-dark);
-        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
 
         .service-card h5 {
             color: var(--primary-color);
@@ -347,14 +340,14 @@
                     we deliver solutions tailored to your needs.
                 </p>
                 <ul class="about-points list-unstyled">
-                    <li><strong>Trusted Expertise:</strong> Years of experience in facility service management across industries.</li>
-                    <li><strong>End-to-End Services:</strong> From housekeeping and security to technical maintenance and landscaping.</li>
-                    <li><strong>Customized Solutions:</strong> We design strategies that fit your facility’s unique challenges.</li>
-                    <li><strong>Professional Workforce:</strong> Skilled, trained, and reliable staff form the backbone of our services.</li>
-                    <li><strong>Consulting Excellence:</strong> Helping organizations optimize operations, save costs, and ensure compliance.</li>
-                    <li><strong>Sustainable Practices:</strong> Promoting eco-friendly, safe, and future-ready environments.</li>
-                    <li><strong>Technology Driven:</strong> Using digital tools and reporting systems for transparency and accountability.</li>
-                    <li><strong>Long-Term Partnerships:</strong> We focus on trust, transparency, and continuous improvement.</li>
+                    <li class="scroll-reveal"><strong>Trusted Expertise:</strong> Years of experience in facility service management across industries.</li>
+                    <li class="scroll-reveal"><strong>End-to-End Services:</strong> From housekeeping and security to technical maintenance and landscaping.</li>
+                    <li class="scroll-reveal"><strong>Customized Solutions:</strong> We design strategies that fit your facility’s unique challenges.</li>
+                    <li class="scroll-reveal"><strong>Professional Workforce:</strong> Skilled, trained, and reliable staff form the backbone of our services.</li>
+                    <li class="scroll-reveal"><strong>Consulting Excellence:</strong> Helping organizations optimize operations, save costs, and ensure compliance.</li>
+                    <li class="scroll-reveal"><strong>Sustainable Practices:</strong> Promoting eco-friendly, safe, and future-ready environments.</li>
+                    <li class="scroll-reveal"><strong>Technology Driven:</strong> Using digital tools and reporting systems for transparency and accountability.</li>
+                    <li class="scroll-reveal"><strong>Long-Term Partnerships:</strong> We focus on trust, transparency, and continuous improvement.</li>
                 </ul>
                 <p class="closing">
                     Our mission is simple: to be your most reliable partner in facility management. 
@@ -371,7 +364,7 @@
             <div class="row mt-4 g-4 justify-content-center">
                 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/First page.png" class="card-img-top" alt="Housekeeping Service">
                         <div class="card-body text-center">
                             <h5 class="card-title">Housekeeping</h5>
@@ -381,7 +374,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Cleaning Machinery.png" class="card-img-top" alt="Cleaning Machineries">
                         <div class="card-body text-center">
                             <h5 class="card-title">Cleaning Machineries</h5>
@@ -391,7 +384,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Floor Mops and wipers.png" class="card-img-top" alt="Floor Mops and Wipers">
                         <div class="card-body text-center">
                             <h5 class="card-title">Floor Mops and Wipers</h5>
@@ -401,7 +394,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Tissues Products.png" class="card-img-top" alt="Tissue Products">
                         <div class="card-body text-center">
                             <h5 class="card-title">Tissues Products</h5>
@@ -411,7 +404,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Hand dryer & Shoe Police Machine.png" class="card-img-top" alt="Hand Dryer & Shoe Polish Machine">
                         <div class="card-body text-center">
                             <h5 class="card-title">Hand Dryer & Shoe Polish Machine</h5>
@@ -421,7 +414,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Urinal Screen mat.png" class="card-img-top" alt="Urinal Screens">
                         <div class="card-body text-center">
                             <h5 class="card-title">Urinal</h5>
@@ -431,7 +424,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Glass cleaning tools.png" class="card-img-top" alt="Glass Cleaning Tools">
                         <div class="card-body text-center">
                             <h5 class="card-title">Glass Cleaning Tools</h5>
@@ -441,7 +434,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Dusters and Brush.png" class="card-img-top" alt="Dusters & Brushes">
                         <div class="card-body text-center">
                             <h5 class="card-title">Dusters & Brushes</h5>
@@ -451,7 +444,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Trolleys & Buckets.png" class="card-img-top" alt="Trolleys & Buckets">
                         <div class="card-body text-center">
                             <h5 class="card-title">Trolleys & Buckets</h5>
@@ -461,7 +454,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Poles and Rods.png" class="card-img-top" alt="Poles and Rods">
                         <div class="card-body text-center">
                             <h5 class="card-title">Poles and Rods</h5>
@@ -471,7 +464,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/House keeping chemicals.png" class="card-img-top" alt="Housekeeping Chemicals">
                         <div class="card-body text-center">
                             <h5 class="card-title">Housekeeping Chemicals</h5>
@@ -481,7 +474,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Room freshners.png" class="card-img-top" alt="Room Freshners">
                         <div class="card-body text-center">
                             <h5 class="card-title">Room Freshners</h5>
@@ -491,7 +484,7 @@
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card service-card h-100">
+                    <div class="card service-card h-100 scroll-reveal">
                         <img src="Images/Dustbin Plastic and steel.png" class="card-img-top" alt="Dustbins">
                         <div class="card-body text-center">
                             <h5 class="card-title">Dustbins</h5>
@@ -545,11 +538,11 @@
     <script>
         // Custom JavaScript for animations
         const revealOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .about-points li, .shadow');
+            const elements = document.querySelectorAll('.scroll-reveal');
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    el.classList.add('visible');
+                if (rect.top < window.innerHeight - 150) {
+                    el.classList.add('is-visible');
                 }
             });
         };
